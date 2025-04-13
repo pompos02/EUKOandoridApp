@@ -1,0 +1,8 @@
+<resources>
+    <string-array name="tech_stacks">
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>Flutter</item>
+        <item>React Native</item>
+    </string-array>
+</resources>

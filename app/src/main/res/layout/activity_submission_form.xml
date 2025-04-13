@@ -1,0 +1,47 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="100dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextProjectName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Project Name" />
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Project Description" />
+
+        <CheckBox
+            android:id="@+id/checkBoxFeatureA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feature A" />
+
+        <CheckBox
+            android:id="@+id/checkBoxFeatureB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feature B" />
+
+        <Spinner
+            android:id="@+id/spinnerTechStack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/buttonSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit" />
+    </LinearLayout>
+</ScrollView>
