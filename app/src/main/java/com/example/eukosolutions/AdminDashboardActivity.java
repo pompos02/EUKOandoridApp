@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class AdminDashboardActivity extends AppCompatActivity {
     private RecyclerView recyclerViewSubmissions;
     private SubmissionAdapter submissionAdapter;
-    private FirebaseFirestore db;
+    private FirebaseFirestore db; // connection to db
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
