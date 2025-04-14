@@ -2,6 +2,7 @@ package com.example.eukosolutions;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,6 +21,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Activity for collecting and submitting project request forms.
+ * Data is stored in Firebase Firestore.
+ */
 public class SubmissionFormActivity extends AppCompatActivity {
 
     // UI Elements
@@ -61,15 +66,6 @@ public class SubmissionFormActivity extends AppCompatActivity {
         // Initialize Firebase Firestore
         db = FirebaseFirestore.getInstance();
 
-        // 1) Setup spinner data from a string array resource
-        //    Ensure you have a string-array in res/values/arrays.xml, e.g.:
-        //    <string-array name="app_languages">
-        //        <item>Java</item>
-        //        <item>Kotlin</item>
-        //        <item>Python</item>
-        //        <item>PHP</item>
-        //        <item>JavaScript</item>
-        //    </string-array>
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.app_languages,
@@ -78,7 +74,7 @@ public class SubmissionFormActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLanguage.setAdapter(adapter);
 
-        // 2) Set up the date picker for the deadline
+        // Set up the date picker for the deadline
         editTextDeadline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,10 +82,14 @@ public class SubmissionFormActivity extends AppCompatActivity {
             }
         });
 
-        // 3) Handle form submission
+        // Handle form submission
         buttonSubmit.setOnClickListener(view -> submitRequest());
     }
 
+
+    /**
+     * Opens a date picker dialog and stores the selected date.
+     */
     private void showDatePickerDialog() {
         // Initialize Calendar to current date
         final Calendar calendar = Calendar.getInstance();
@@ -100,15 +100,12 @@ public class SubmissionFormActivity extends AppCompatActivity {
         // Create a DatePickerDialog
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 SubmissionFormActivity.this,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int pickedYear, int pickedMonth, int pickedDay) {
-                        // Month is 0-based index, so you might want to adjust it (+1)
-                        pickedMonth += 1;
-                        selectedDeadline = pickedYear + "-" + (pickedMonth < 10 ? "0" + pickedMonth : pickedMonth)
-                                + "-" + (pickedDay < 10 ? "0" + pickedDay : pickedDay);
-                        editTextDeadline.setText(selectedDeadline);
-                    }
+                (view, pickedYear, pickedMonth, pickedDay) -> {
+
+                    pickedMonth += 1; // because it is 0 indexed
+                    selectedDeadline = pickedYear + "-" + (pickedMonth < 10 ? "0" + pickedMonth : pickedMonth)
+                            + "-" + (pickedDay < 10 ? "0" + pickedDay : pickedDay);
+                    editTextDeadline.setText(selectedDeadline);
                 },
                 year,
                 month,
@@ -117,6 +114,10 @@ public class SubmissionFormActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+
+    /**
+     * Collects and validates form input, then submits data to Firestore.
+     */
     private void submitRequest() {
         // Retrieve form data
         String companyName = editTextCompanyName.getText().toString().trim();
@@ -130,11 +131,23 @@ public class SubmissionFormActivity extends AppCompatActivity {
         String language = spinnerLanguage.getSelectedItem().toString();
         String deadline = selectedDeadline;  // Value set from the date picker
 
-        // Minimal validation example
+
+        // Validate required fields
         if (companyName.isEmpty()) {
             Toast.makeText(this, "Please enter the company name.", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        if (companyEmail.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(companyEmail).matches()) {
+            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (companyPhone.isEmpty() || companyPhone.length() < 6) {
+            Toast.makeText(this, "Please enter a valid phone number. (>6)", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (projectDetails.isEmpty()) {
             Toast.makeText(this, "Please enter the project details.", Toast.LENGTH_SHORT).show();
             return;
