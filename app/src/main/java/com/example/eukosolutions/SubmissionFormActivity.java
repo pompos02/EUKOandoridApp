@@ -134,7 +134,7 @@ public class SubmissionFormActivity extends AppCompatActivity {
 
         // Validate required fields
         if (companyName.isEmpty()) {
-            Toast.makeText(this, "Please enter the company name.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please fill the company name field.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -149,7 +149,7 @@ public class SubmissionFormActivity extends AppCompatActivity {
         }
 
         if (projectDetails.isEmpty()) {
-            Toast.makeText(this, "Please enter the project details.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please fill the project details field.", Toast.LENGTH_SHORT).show();
             return;
         }
 

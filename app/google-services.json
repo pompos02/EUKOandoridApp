@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "955270192224",
+    "project_id": "eukosolutionapp",
+    "storage_bucket": "eukosolutionapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955270192224:android:71d96b89d2a5c6f57db705",
+        "android_client_info": {
+          "package_name": "com.example.eukosolutions"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8RxT7roIfphrR2BHi030_Ey40aTk5fCo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
