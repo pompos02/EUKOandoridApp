@@ -1,47 +1,99 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="100dp">
+    android:padding="50dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Company name -->
         <EditText
-            android:id="@+id/editTextProjectName"
+            android:id="@+id/editTextCompanyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Project Name" />
+            android:hint="Company Name"
+            android:inputType="textPersonName"
+            android:padding="8dp" />
 
+        <!-- Company phone -->
         <EditText
-            android:id="@+id/editTextDescription"
+            android:id="@+id/editTextCompanyPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Project Description" />
+            android:hint="Company Phone"
+            android:inputType="phone"
+            android:padding="8dp" />
 
+        <!-- Company email -->
+        <EditText
+            android:id="@+id/editTextCompanyEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Company Email"
+            android:inputType="textEmailAddress"
+            android:padding="8dp" />
+
+        <!-- Project details (bigger text area) -->
+        <EditText
+            android:id="@+id/editTextProjectDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Project Details"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:gravity="top"
+            android:padding="8dp" />
+
+        <!-- Link database to website? -->
         <CheckBox
-            android:id="@+id/checkBoxFeatureA"
+            android:id="@+id/checkBoxLinkDatabase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Feature A" />
+            android:text="Link database to website" />
 
+        <!-- Need a new website? -->
         <CheckBox
-            android:id="@+id/checkBoxFeatureB"
+            android:id="@+id/checkBoxNewWebsite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Feature B" />
+            android:text="I want a new website" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select your app/website's language"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Application / website language (spinner) -->
         <Spinner
-            android:id="@+id/spinnerTechStack"
+            android:id="@+id/spinnerLanguage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
 
+        <!-- Estimated delivery deadline (date picker) -->
+        <EditText
+            android:id="@+id/editTextDeadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Estimated Delivery Deadline"
+            android:focusable="false"
+            android:clickable="true"
+            android:padding="40dp" />
+
+        <!-- Submit button -->
         <Button
             android:id="@+id/buttonSubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="260dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
             android:text="Submit" />
+
     </LinearLayout>
 </ScrollView>
