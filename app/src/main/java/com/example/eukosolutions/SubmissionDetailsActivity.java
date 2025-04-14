@@ -83,7 +83,7 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
                             //Log.d(TAG, "Submission data loaded successfully.");
                             // Set text for all TextViews using data from the submission object
                             textViewCompanyNameDetail.setText(submission.getCompanyName() != null ? submission.getCompanyName() : "N/A");
-                            textViewProjectDetailsDetail.setText(submission.getProjectDetails() != null ? submission.getProjectDetails() : "No details provided.");
+                            textViewProjectDetailsDetail.setText(submission.getProjectDetails() != null ? submission.getProjectDetails() : "N/A");
                             textViewCompanyEmailDetail.setText(submission.getCompanyEmail() != null ? submission.getCompanyEmail() : "N/A");
                             textViewCompanyPhoneDetail.setText(submission.getCompanyPhone() != null ? submission.getCompanyPhone() : "N/A");
                             textViewDeadlineDetail.setText(submission.getDeadline() != null ? submission.getDeadline() : "N/A"); // can be null
@@ -133,6 +133,8 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> {
                     Log.i(TAG, "Submission deleted successfully: " + documentId);
                     Toast.makeText(this, "Submission deleted", Toast.LENGTH_SHORT).show();
+
+                    setResult(RESULT_OK);  // Tell the calling activity that a deletion happened
                     finish(); // Close the details activity after deletion
                 })
                 .addOnFailureListener(e -> {

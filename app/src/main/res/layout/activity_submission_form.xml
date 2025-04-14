@@ -1,99 +1,143 @@
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="50dp">
+    android:padding="48dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingBottom="24dp">
 
-        <!-- Company name -->
-        <EditText
-            android:id="@+id/editTextCompanyName"
-            android:layout_width="match_parent"
+        <!-- Spacer -->
+        <View android:layout_width="match_parent" android:layout_height="50dp"/>
+
+        <!-- Company Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:hint="Company Name"
-            android:inputType="textPersonName"
-            android:padding="8dp" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        <!-- Company phone -->
-        <EditText
-            android:id="@+id/editTextCompanyPhone"
-            android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View android:layout_height="16dp" android:layout_width="match_parent"/>
+
+        <!-- Company Phone -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:hint="Company Phone"
-            android:inputType="phone"
-            android:padding="8dp" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        <!-- Company email -->
-        <EditText
-            android:id="@+id/editTextCompanyEmail"
-            android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextCompanyPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View android:layout_height="16dp" android:layout_width="match_parent"/>
+
+        <!-- Company Email -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:hint="Company Email"
-            android:inputType="textEmailAddress"
-            android:padding="8dp" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        <!-- Project details (bigger text area) -->
-        <EditText
-            android:id="@+id/editTextProjectDetails"
-            android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextCompanyEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View android:layout_height="16dp" android:layout_width="match_parent"/>
+
+        <!-- Project Details (bigger text area) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:hint="Project Details"
-            android:inputType="textMultiLine"
-            android:lines="4"
-            android:gravity="top"
-            android:padding="8dp" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextProjectDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="4"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View android:layout_height="16dp" android:layout_width="match_parent"/>
 
         <!-- Link database to website? -->
-        <CheckBox
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/checkBoxLinkDatabase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Link database to website" />
 
         <!-- Need a new website? -->
-        <CheckBox
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/checkBoxNewWebsite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="I want a new website" />
 
+        <View android:layout_height="16dp" android:layout_width="match_parent"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select your app/website's language"
-            android:layout_marginTop="16dp"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <!-- Application / website language (spinner) -->
         <Spinner
             android:id="@+id/spinnerLanguage"
-            android:layout_width="match_parent"
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="4dp" />
+
+        <View android:layout_height="16dp" android:layout_width="match_parent"/>
 
         <!-- Estimated delivery deadline (date picker) -->
-        <EditText
-            android:id="@+id/editTextDeadline"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:hint="Estimated Delivery Deadline"
-            android:focusable="false"
-            android:clickable="true"
-            android:padding="40dp" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        <!-- Submit button -->
-        <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextDeadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:clickable="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View android:layout_height="16dp" android:layout_width="match_parent"/>
+
+        <!-- Submit Button -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonSubmit"
-            android:layout_width="260dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="16dp"
-            android:text="Submit" />
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/purple_500"
+            app:cornerRadius="8dp"
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 </ScrollView>
