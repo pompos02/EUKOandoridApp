@@ -58,7 +58,7 @@ public class SubmissionAdapter extends RecyclerView.Adapter<SubmissionAdapter.Su
             Intent intent = new Intent(context, SubmissionDetailsActivity.class);
             // Pass the document ID to the details activity
             intent.putExtra("DOCUMENT_ID", submission.getId());
-            context.startActivity(intent);
+            context.startActivityForResult(intent, 1001);
         });
     }
 

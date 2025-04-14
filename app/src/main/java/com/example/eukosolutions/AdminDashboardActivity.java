@@ -1,6 +1,9 @@
 package com.example.eukosolutions;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +24,9 @@ public class AdminDashboardActivity extends AppCompatActivity {
     private SubmissionAdapter submissionAdapter;
     private FirebaseFirestore db; // connection to db
 
+    private ProgressBar progressBar;
+    private ImageButton buttonRefresh;
+
     /**
      * Called when the activity is starting.
      * Initializes the layout, sets up RecyclerView, and loads submission data.
@@ -33,13 +39,23 @@ public class AdminDashboardActivity extends AppCompatActivity {
         recyclerViewSubmissions = findViewById(R.id.recyclerViewSubmissions);
         recyclerViewSubmissions.setLayoutManager(new LinearLayoutManager(this));
 
+        progressBar = findViewById(R.id.progressBar);
+        buttonRefresh = findViewById(R.id.buttonRefresh);
+
         db = FirebaseFirestore.getInstance();
 
         // Initialize adapter with empty list for now
         submissionAdapter = new SubmissionAdapter(new ArrayList<>(), this);
         recyclerViewSubmissions.setAdapter(submissionAdapter);
 
+        // Initial load
         loadSubmissions();
+
+        // Refresh when Refresh-button is pressed
+        buttonRefresh.setOnClickListener(v -> {
+            loadSubmissions();
+            Toast.makeText(this, "Refreshing...", Toast.LENGTH_SHORT).show();
+        });
     }
 
     /**
@@ -47,6 +63,10 @@ public class AdminDashboardActivity extends AppCompatActivity {
      * Updates the RecyclerView with the fetched data.
      */
     private void loadSubmissions() {
+        // Show spinner
+        progressBar.setVisibility(View.VISIBLE);
+        recyclerViewSubmissions.setVisibility(View.GONE);
+
         db.collection("submissions")
                 .orderBy("timestamp", Query.Direction.DESCENDING) // newest first
                 .get()
@@ -64,13 +84,34 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
                         submissionList.add(submission);
                     }
+
                     // Update the adapter with the new list
                     submissionAdapter.setSubmissions(submissionList);
+
+                    // Hide spinner and show list
+                    progressBar.setVisibility(View.GONE);
+                    recyclerViewSubmissions.setVisibility(View.VISIBLE);
                 })
                 .addOnFailureListener(e -> {
+                    progressBar.setVisibility(View.GONE);
+                    recyclerViewSubmissions.setVisibility(View.VISIBLE);
                     Toast.makeText(AdminDashboardActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, android.content.Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // 1001 matches the request code used in SubmissionAdapter
+        if (requestCode == 1001 && resultCode == RESULT_OK) {
+            loadSubmissions();  // Reload the list if a submission was deleted
+
+        }
+    }
+
 }
+
+
 
 
