@@ -6,6 +6,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+// This class defines the GuestHomePageActivity screen (The HomeScreen)
 public class GuestHomePageActivity extends AppCompatActivity {
 
     @Override

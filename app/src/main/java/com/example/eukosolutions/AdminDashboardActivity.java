@@ -12,12 +12,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
-
+/**
+ * AdminDashboardActivity displays a list of all submissions made by users.
+ * It retrieves data from Firestore and shows it in a RecyclerView.
+ */
 public class AdminDashboardActivity extends AppCompatActivity {
     private RecyclerView recyclerViewSubmissions;
     private SubmissionAdapter submissionAdapter;
     private FirebaseFirestore db; // connection to db
 
+    /**
+     * Called when the activity is starting.
+     * Initializes the layout, sets up RecyclerView, and loads submission data.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,18 +42,29 @@ public class AdminDashboardActivity extends AppCompatActivity {
         loadSubmissions();
     }
 
+    /**
+     * Loads all submissions from Firestore, ordered by timestamp in descending order.
+     * Updates the RecyclerView with the fetched data.
+     */
     private void loadSubmissions() {
         db.collection("submissions")
-                .orderBy("timestamp", Query.Direction.DESCENDING)
+                .orderBy("timestamp", Query.Direction.DESCENDING) // newest first
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
+                    // Create a list to hold the fetched submissions
                     ArrayList<SubmissionModel> submissionList = new ArrayList<>();
+
+                    // Loop through all documents (each submission)
                     for (DocumentSnapshot doc : queryDocumentSnapshots) {
                         SubmissionModel submission = doc.toObject(SubmissionModel.class);
-                        // Keep track of doc ID if needed
+
+                        // Assign document ID for reference (useful for updates/deletes)
+                        assert submission != null;
                         submission.setId(doc.getId());
+
                         submissionList.add(submission);
                     }
+                    // Update the adapter with the new list
                     submissionAdapter.setSubmissions(submissionList);
                 })
                 .addOnFailureListener(e -> {
