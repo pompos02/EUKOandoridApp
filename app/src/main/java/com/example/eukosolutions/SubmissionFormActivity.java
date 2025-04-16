@@ -35,6 +35,7 @@ public class SubmissionFormActivity extends AppCompatActivity {
     private CheckBox checkBoxLinkDatabase;
     private CheckBox checkBoxNewWebsite;
     private Spinner spinnerLanguage;
+    private Spinner spinnerProductRange;
     private EditText editTextDeadline;
     private Button buttonSubmit;
 
@@ -59,6 +60,8 @@ public class SubmissionFormActivity extends AppCompatActivity {
         checkBoxNewWebsite = findViewById(R.id.checkBoxNewWebsite);
 
         spinnerLanguage = findViewById(R.id.spinnerLanguage);
+        spinnerProductRange = findViewById(R.id.spinnerProductRange);
+
         editTextDeadline = findViewById(R.id.editTextDeadline);
 
         buttonSubmit = findViewById(R.id.buttonSubmit);
@@ -73,6 +76,14 @@ public class SubmissionFormActivity extends AppCompatActivity {
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLanguage.setAdapter(adapter);
+
+        ArrayAdapter<CharSequence> rangeAdapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.product_ranges,
+                android.R.layout.simple_spinner_item
+        );
+        rangeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerProductRange.setAdapter(rangeAdapter);
 
         // Set up the date picker for the deadline
         editTextDeadline.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +140,7 @@ public class SubmissionFormActivity extends AppCompatActivity {
         boolean newWebsite = checkBoxNewWebsite.isChecked();
 
         String language = spinnerLanguage.getSelectedItem().toString();
+        String productRange = spinnerProductRange.getSelectedItem().toString();
         String deadline = selectedDeadline;  // Value set from the date picker
 
 
@@ -163,6 +175,7 @@ public class SubmissionFormActivity extends AppCompatActivity {
         submissionData.put("newWebsite", newWebsite);
         submissionData.put("language", language);
         submissionData.put("deadline", deadline);
+        submissionData.put("productRange", productRange);
         submissionData.put("timestamp", new Date()); // store current time of submission
 
         // Send data to Firestore

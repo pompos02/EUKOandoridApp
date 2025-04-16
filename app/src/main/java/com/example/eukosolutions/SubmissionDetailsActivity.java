@@ -20,7 +20,7 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
             textViewCompanyEmailDetail, textViewCompanyPhoneDetail,
             textViewDeadlineDetail, textViewLanguageDetail,
             textViewNewWebsiteDetail, textViewLinkDatabaseDetail,
-            textViewTimestampDetail;
+            textViewTimestampDetail, textViewProductRangeDetail;
     private Button buttonDelete;
 
     private FirebaseFirestore db;
@@ -45,6 +45,7 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
         textViewCompanyPhoneDetail = findViewById(R.id.textViewCompanyPhoneDetail);
         textViewDeadlineDetail = findViewById(R.id.textViewDeadlineDetail);
         textViewLanguageDetail = findViewById(R.id.textViewLanguageDetail);
+        textViewProductRangeDetail = findViewById(R.id.textViewProductRangeDetail);
         textViewNewWebsiteDetail = findViewById(R.id.textViewNewWebsiteDetail);
         textViewLinkDatabaseDetail = findViewById(R.id.textViewLinkDatabaseDetail);
         textViewTimestampDetail = findViewById(R.id.textViewTimestampDetail);
@@ -88,6 +89,8 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
                             textViewCompanyPhoneDetail.setText(submission.getCompanyPhone() != null ? submission.getCompanyPhone() : "N/A");
                             textViewDeadlineDetail.setText(submission.getDeadline() != null ? submission.getDeadline() : "N/A"); // can be null
                             textViewLanguageDetail.setText(submission.getLanguage() != null ? submission.getLanguage() : "N/A");
+                            textViewProductRangeDetail.setText(submission.getProductRange() != null ? submission.getProductRange() : "N/A");
+
 
                             textViewNewWebsiteDetail.setText(String.valueOf(submission.isNewWebsite())); // "true" or "false"
                             textViewLinkDatabaseDetail.setText(String.valueOf(submission.isLinkDatabase())); // "true" or "false"

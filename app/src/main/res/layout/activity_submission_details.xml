@@ -1,16 +1,30 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SubmissionDetailsActivity"
     android:padding="48dp">
 
-    <LinearLayout
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal">
+
+    <!-- Submission Card -->
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+
+        app:cardBackgroundColor="#F0F0F0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -20,11 +34,12 @@
             android:textSize="14sp"
             android:textColor="@color/black" />
         <TextView
-            android:id="@+id/textViewCompanyNameDetail"   android:textColor="@color/black" android:layout_width="match_parent"
+            android:id="@+id/textViewCompanyNameDetail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:textSize="18sp"
-            tools:text="Example Company Name Ltd." />
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,12 +48,14 @@
             android:textStyle="bold"
             android:textSize="14sp"
             android:textColor="@color/black" />
+
         <TextView
-            android:id="@+id/textViewProjectDetailsDetail"   android:textColor="@color/black" android:layout_width="match_parent"
+            android:id="@+id/textViewProjectDetailsDetail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:textSize="16sp"
-            tools:text="Detailed description of the project requirements goes here. It might be several lines long." />
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,12 +64,16 @@
             android:textStyle="bold"
             android:textSize="14sp"
             android:textColor="@color/black" />
+
         <TextView
-            android:id="@+id/textViewCompanyEmailDetail"   android:textColor="@color/black" android:layout_width="match_parent"
+            android:id="@+id/textViewCompanyEmailDetail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:textSize="16sp"
-            android:autoLink="email"  android:textColorLink="#0000FF" tools:text="contact@example.com" />
+            android:textColor="@color/black"
+            android:autoLink="email"
+            android:textColorLink="#0000FF" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,12 +82,16 @@
             android:textStyle="bold"
             android:textSize="14sp"
             android:textColor="@color/black" />
+
         <TextView
-            android:id="@+id/textViewCompanyPhoneDetail"   android:textColor="@color/black" android:layout_width="match_parent"
+            android:id="@+id/textViewCompanyPhoneDetail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:textSize="16sp"
-            android:autoLink="phone"  android:textColorLink="#0000FF" tools:text="6901234567" />
+            android:textColor="@color/black"
+            android:autoLink="phone"
+            android:textColorLink="#0000FF" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -75,12 +100,14 @@
             android:textStyle="bold"
             android:textSize="14sp"
             android:textColor="@color/black" />
+
         <TextView
-            android:id="@+id/textViewDeadlineDetail"   android:textColor="@color/black" android:layout_width="match_parent"
+            android:id="@+id/textViewDeadlineDetail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:textSize="16sp"
-            tools:text="2025-12-31" />
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -89,12 +116,30 @@
             android:textStyle="bold"
             android:textSize="14sp"
             android:textColor="@color/black" />
+
         <TextView
-            android:id="@+id/textViewLanguageDetail" android:textColor="@color/black" android:layout_width="match_parent"
+            android:id="@+id/textViewLanguageDetail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:textSize="16sp"
-            tools:text="Greek" />
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Range:"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/textViewProductRangeDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -103,12 +148,14 @@
             android:textStyle="bold"
             android:textSize="14sp"
             android:textColor="@color/black" />
+
         <TextView
-            android:id="@+id/textViewNewWebsiteDetail"   android:textColor="@color/black" android:layout_width="match_parent"
+            android:id="@+id/textViewNewWebsiteDetail"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:textSize="16sp"
-            tools:text="true" />
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -118,11 +165,12 @@
             android:textSize="14sp"
             android:textColor="@color/black" />
         <TextView
-            android:id="@+id/textViewLinkDatabaseDetail"   android:textColor="@color/black" android:layout_width="match_parent"
+            android:id="@+id/textViewLinkDatabaseDetail"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:textSize="16sp"
-            tools:text="false" />
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -131,20 +179,29 @@
             android:textStyle="bold"
             android:textSize="14sp"
             android:textColor="@color/black" />
+
         <TextView
             android:id="@+id/textViewTimestampDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp" android:textSize="14sp"
-            android:textColor="@android:color/darker_gray"
-            tools:text="14 Apr 2025, 03:30:00 PM" />
-
-        <Button
-            android:id="@+id/buttonDelete" android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete Submission"
-            app:backgroundTint="@android:color/holo_red_light" android:textColor="@android:color/white"
-            android:layout_gravity="center_horizontal"/>
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
 
     </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- Delete Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Submission"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        app:cornerRadius="12dp"
+        app:icon="@drawable/baseline_delete_24"
+        app:backgroundTint="@android:color/holo_red_light" />
+</LinearLayout>
+
 </ScrollView>
