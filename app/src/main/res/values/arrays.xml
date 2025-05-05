@@ -5,4 +5,12 @@
         <item>English</item>
         <item>Russian</item>
     </string-array>
+
+    <string-array name="product_ranges">
+        <item>1 - 50 products</item>
+        <item>51 - 200 products</item>
+        <item>201 - 1000 products</item>
+        <item>1001 - 5000 products</item>
+        <item>5001+ products</item>
+    </string-array>
 </resources>

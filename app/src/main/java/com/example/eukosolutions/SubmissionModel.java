@@ -12,11 +12,12 @@ public class SubmissionModel {
     private String companyName;
     private String companyEmail;
     private String companyPhone;
-    private String projectDetails; // Renamed from description
+    private String projectDetails;
     private String deadline;       // Format "YYYY-MM-DD"
     private String language;
-    private boolean newWebsite;    // Replaced featureA
-    private boolean linkDatabase;  // Replaced featureB
+    private String productRange;
+    private boolean newWebsite;
+    private boolean linkDatabase;
 
     @ServerTimestamp // Optional: Firestore sets this on write
     private Date timestamp;        // Firebase Timestamp maps to java.util.Date
@@ -52,6 +53,10 @@ public class SubmissionModel {
 
     public String getLanguage() {
         return language;
+    }
+
+    public String getProductRange() {
+        return productRange;
     }
 
     public boolean isNewWebsite() { // Use 'is' prefix for boolean getters
@@ -95,6 +100,8 @@ public class SubmissionModel {
     public void setLanguage(String language) {
         this.language = language;
     }
+
+    public void setProduct_range(String productRange) {this.productRange = productRange;}
 
     public void setNewWebsite(boolean newWebsite) {
         this.newWebsite = newWebsite;
