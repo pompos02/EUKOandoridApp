@@ -176,6 +176,7 @@ public class SubmissionFormActivity extends AppCompatActivity {
         submissionData.put("language", language);
         submissionData.put("deadline", deadline);
         submissionData.put("productRange", productRange);
+        submissionData.put("approved", false);
         submissionData.put("timestamp", new Date()); // store current time of submission
 
         // Send data to Firestore

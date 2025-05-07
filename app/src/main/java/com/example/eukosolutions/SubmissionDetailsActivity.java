@@ -21,7 +21,7 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
             textViewDeadlineDetail, textViewLanguageDetail,
             textViewNewWebsiteDetail, textViewLinkDatabaseDetail,
             textViewTimestampDetail, textViewProductRangeDetail;
-    private Button buttonDelete;
+    private Button buttonDelete, buttonApprove;
 
     private FirebaseFirestore db;
     private String documentId;
@@ -51,6 +51,7 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
         textViewTimestampDetail = findViewById(R.id.textViewTimestampDetail);
 
         buttonDelete = findViewById(R.id.buttonDelete);
+        buttonApprove = findViewById(R.id.buttonApprove);
 
         db = FirebaseFirestore.getInstance();
 
@@ -68,6 +69,7 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
         loadSubmissionDetail();
 
         buttonDelete.setOnClickListener(v -> deleteSubmission());
+        buttonApprove.setOnClickListener(v -> submissionApproved());
     }
     /**
      * Loads the submission details from Firestore using the document ID.
@@ -100,6 +102,14 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
                                 textViewTimestampDetail.setText(timestampFormat.format(submission.getTimestamp()));
                             } else {
                                 textViewTimestampDetail.setText("N/A");
+                            }
+
+                            if (submission.isApproved()) {
+                                buttonApprove.setEnabled(false);
+                                buttonApprove.setText("Already Approved");
+                            } else {
+                                buttonApprove.setEnabled(true);
+                                buttonApprove.setText("Mark as Approved");
                             }
 
                         } else {
@@ -143,6 +153,23 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Log.e(TAG, "Error deleting submission: " + documentId, e);
                     Toast.makeText(this, "Error deleting submission: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void submissionApproved() {
+        if (documentId == null || documentId.isEmpty()) {
+            Toast.makeText(this, "Error: Cannot delete submission, ID missing.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        db.collection("submissions").document(documentId)
+                .update("approved", true)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(this, "Submission marked as approved.", Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_OK); // Notify AdminDashboardActivity
+                    finish(); // Return to the submission list
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Failed to approve submission: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 }
