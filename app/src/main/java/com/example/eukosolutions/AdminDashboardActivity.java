@@ -22,13 +22,12 @@ import java.util.ArrayList;
 public class AdminDashboardActivity extends AppCompatActivity {
     private RecyclerView recyclerViewSubmissions;
     private SubmissionAdapter submissionAdapter;
-    private FirebaseFirestore db; // connection to db
+    private FirebaseFirestore db;
 
     private ProgressBar progressBar;
     private ImageButton buttonRefresh;
 
     /**
-     * Called when the activity is starting.
      * Initializes the layout, sets up RecyclerView, and loads submission data.
      */
     @Override
@@ -68,7 +67,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         recyclerViewSubmissions.setVisibility(View.GONE);
 
         db.collection("submissions")
-                .orderBy("timestamp", Query.Direction.DESCENDING) // newest first
+                .orderBy("timestamp", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     // Create a list to hold the fetched submissions
@@ -78,7 +77,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
                     for (DocumentSnapshot doc : queryDocumentSnapshots) {
                         SubmissionModel submission = doc.toObject(SubmissionModel.class);
 
-                        // Assign document ID for reference (useful for updates/deletes)
+                        // Assign document ID for reference (for updates/deletes)
                         assert submission != null;
                         submission.setId(doc.getId());
 
@@ -102,7 +101,6 @@ public class AdminDashboardActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, android.content.Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         // 1001 matches the request code used in SubmissionAdapter
         if (requestCode == 1001 && resultCode == RESULT_OK) {
             loadSubmissions();  // Reload the list if a submission was deleted

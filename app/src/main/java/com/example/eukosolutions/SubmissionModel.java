@@ -1,7 +1,7 @@
 package com.example.eukosolutions;
 
 import com.google.firebase.firestore.DocumentId;
-import com.google.firebase.firestore.ServerTimestamp; // Optional: If you want Firestore to set the timestamp automatically
+import com.google.firebase.firestore.ServerTimestamp;
 import java.util.Date;
 
 public class SubmissionModel {
@@ -21,10 +21,9 @@ public class SubmissionModel {
     private boolean approved;
     private boolean linkDatabase;
 
-    @ServerTimestamp // Optional: Firestore sets this on write
-    private Date timestamp;        // Firebase Timestamp maps to java.util.Date
+    @ServerTimestamp
+    private Date timestamp;        // Firebase Timestamp
 
-    // Firestore requires a public no-argument constructor
     public SubmissionModel() {}
 
     // --- Getters ---

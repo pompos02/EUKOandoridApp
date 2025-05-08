@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.view.View;
-import android.widget.DatePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,12 +37,9 @@ public class SubmissionFormActivity extends AppCompatActivity {
     private Spinner spinnerProductRange;
     private EditText editTextDeadline;
     private Button buttonSubmit;
-
-    // Firebase
     private FirebaseFirestore db;
 
-    // To store the selected deadline date
-    private String selectedDeadline;  // or you could store a Date object
+    private String selectedDeadline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +62,10 @@ public class SubmissionFormActivity extends AppCompatActivity {
 
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
-        // Initialize Firebase Firestore
+
         db = FirebaseFirestore.getInstance();
 
+        // Adapter for the language spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.app_languages,
@@ -77,6 +74,7 @@ public class SubmissionFormActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLanguage.setAdapter(adapter);
 
+        // Adapter for the product range spinner
         ArrayAdapter<CharSequence> rangeAdapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.product_ranges,
@@ -96,7 +94,6 @@ public class SubmissionFormActivity extends AppCompatActivity {
         // Handle form submission
         buttonSubmit.setOnClickListener(view -> submitRequest());
     }
-
 
     /**
      * Opens a date picker dialog and stores the selected date.

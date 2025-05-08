@@ -1,21 +1,20 @@
 package com.example.eukosolutions;
 
 import android.os.Bundle;
-import android.util.Log; // For logging errors
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException; // For detailed errors
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import java.text.SimpleDateFormat; // For formatting timestamp
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 // Main activity class for displaying all the details of a specific submission from Firestore
 public class SubmissionDetailsActivity extends AppCompatActivity {
 
-    // Declare TextViews for all fields you want to display
     private TextView textViewCompanyNameDetail, textViewProjectDetailsDetail,
             textViewCompanyEmailDetail, textViewCompanyPhoneDetail,
             textViewDeadlineDetail, textViewLanguageDetail,
@@ -80,7 +79,6 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
-                        // Use the updated SubmissionModel
                         SubmissionModel submission = documentSnapshot.toObject(SubmissionModel.class);
                         if (submission != null) {
                             //Log.d(TAG, "Submission data loaded successfully.");
@@ -94,8 +92,8 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
                             textViewProductRangeDetail.setText(submission.getProductRange() != null ? submission.getProductRange() : "N/A");
 
 
-                            textViewNewWebsiteDetail.setText(String.valueOf(submission.isNewWebsite())); // "true" or "false"
-                            textViewLinkDatabaseDetail.setText(String.valueOf(submission.isLinkDatabase())); // "true" or "false"
+                            textViewNewWebsiteDetail.setText(String.valueOf(submission.isNewWebsite())); //
+                            textViewLinkDatabaseDetail.setText(String.valueOf(submission.isLinkDatabase()));
 
                             // Format and display the timestamp
                             if (submission.getTimestamp() != null) {
@@ -147,8 +145,8 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
                     Log.i(TAG, "Submission deleted successfully: " + documentId);
                     Toast.makeText(this, "Submission deleted", Toast.LENGTH_SHORT).show();
 
-                    setResult(RESULT_OK);  // Tell the calling activity that a deletion happened
-                    finish(); // Close the details activity after deletion
+                    setResult(RESULT_OK);  // Notify AdminDashboardActivity
+                    finish(); // Close activity after deletion
                 })
                 .addOnFailureListener(e -> {
                     Log.e(TAG, "Error deleting submission: " + documentId, e);
@@ -156,6 +154,10 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Approves the current submission from Firestore using the document ID.
+     * Closes the activity upon successful deletion.
+     */
     private void submissionApproved() {
         if (documentId == null || documentId.isEmpty()) {
             Toast.makeText(this, "Error: Cannot delete submission, ID missing.", Toast.LENGTH_SHORT).show();
