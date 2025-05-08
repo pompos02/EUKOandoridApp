@@ -73,7 +73,7 @@ public class SubmissionAdapter extends RecyclerView.Adapter<SubmissionAdapter.Su
     @Override
     public int getItemCount() {
         // Return the total number of items in the list
-        return submissionList != null ? submissionList.size() : 0; // Added null check
+        return submissionList != null ? submissionList.size() : 0; // null check
     }
 
     /**

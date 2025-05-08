@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:padding="64dp">
 
-        <!-- Logo & Welcome message -->
+        <!-- Logo & Message -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

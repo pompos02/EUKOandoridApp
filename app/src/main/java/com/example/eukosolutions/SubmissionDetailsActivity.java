@@ -37,7 +37,7 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_submission_details);
 
-        // Initialize all TextViews and the Button
+        // Initialize all TextViews and the Buttons
         textViewCompanyNameDetail = findViewById(R.id.textViewCompanyNameDetail);
         textViewProjectDetailsDetail = findViewById(R.id.textViewProjectDetailsDetail);
         textViewCompanyEmailDetail = findViewById(R.id.textViewCompanyEmailDetail);
@@ -81,7 +81,6 @@ public class SubmissionDetailsActivity extends AppCompatActivity {
                     if (documentSnapshot.exists()) {
                         SubmissionModel submission = documentSnapshot.toObject(SubmissionModel.class);
                         if (submission != null) {
-                            //Log.d(TAG, "Submission data loaded successfully.");
                             // Set text for all TextViews using data from the submission object
                             textViewCompanyNameDetail.setText(submission.getCompanyName() != null ? submission.getCompanyName() : "N/A");
                             textViewProjectDetailsDetail.setText(submission.getProjectDetails() != null ? submission.getProjectDetails() : "N/A");

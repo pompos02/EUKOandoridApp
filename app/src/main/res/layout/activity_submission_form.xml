@@ -118,6 +118,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
+        <!-- Product range (spinner) -->
         <Spinner
             android:id="@+id/spinnerProductRange"
             android:layout_width="310dp"

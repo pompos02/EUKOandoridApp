@@ -13,7 +13,7 @@ public class SubmissionModel {
     private String companyEmail;
     private String companyPhone;
     private String projectDetails;
-    private String deadline;       // Format "YYYY-MM-DD"
+    private String deadline;  // Format "YYYY-MM-DD"
     private String language;
     private String productRange;
     private boolean newWebsite;
@@ -22,7 +22,7 @@ public class SubmissionModel {
     private boolean linkDatabase;
 
     @ServerTimestamp
-    private Date timestamp;        // Firebase Timestamp
+    private Date timestamp;  // Firebase Timestamp
 
     public SubmissionModel() {}
 
