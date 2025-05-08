@@ -15,30 +15,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="16dp"
-        android:background="?android:attr/selectableItemBackground">
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical">
 
-        <!-- Company Name -->
-        <TextView
-            android:id="@+id/textViewCompanyName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textAppearance="?attr/textAppearanceListItem"
-            tools:text="Example Company Name Ltd." />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <!-- Deadline -->
-        <TextView
-            android:id="@+id/textViewDeadline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textAppearance="?attr/textAppearanceListItemSecondary"
-            tools:text="Deadline: 2025-12-31" />
+            <!-- Company Name -->
+            <TextView
+                android:id="@+id/textViewCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textAppearance="?attr/textAppearanceListItem"
+                tools:text="Example Company Name Ltd." />
+
+            <!-- Deadline -->
+            <TextView
+                android:id="@+id/textViewDeadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textAppearance="?attr/textAppearanceListItemSecondary"
+                tools:text="Deadline: 2025-12-31" />
     </LinearLayout>
+
+        <!-- Approval Emoji -->
+        <ImageView
+            android:id="@+id/imageViewApprovalStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:src="@drawable/ic_pending_24"
+   />
+    </LinearLayout>
+
 </com.google.android.material.card.MaterialCardView>

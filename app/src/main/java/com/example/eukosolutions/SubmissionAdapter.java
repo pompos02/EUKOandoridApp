@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,6 +54,13 @@ public class SubmissionAdapter extends RecyclerView.Adapter<SubmissionAdapter.Su
         holder.textViewCompanyName.setText(submission.getCompanyName() != null ? submission.getCompanyName() : "N/A"); // Display Company Name
         holder.textViewDeadline.setText(submission.getDeadline() != null ? "Deadline: " + submission.getDeadline() : "No Deadline"); // Display Deadline
 
+        // Set approval emoji based on approval attribute value
+        if (submission.isApproved()) {
+            holder.imageViewApprovalStatus.setImageResource(R.drawable.baseline_check_circle_24);
+        } else {
+            holder.imageViewApprovalStatus.setImageResource(R.drawable.ic_pending_24);
+        }
+
         // Set the click listener for the entire item view
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, SubmissionDetailsActivity.class);
@@ -88,13 +96,13 @@ public class SubmissionAdapter extends RecyclerView.Adapter<SubmissionAdapter.Su
     public static class SubmissionViewHolder extends RecyclerView.ViewHolder {
         // Declare the TextViews defined in submission_item.xml
         TextView textViewCompanyName, textViewDeadline;
+        ImageView imageViewApprovalStatus;
 
         public SubmissionViewHolder(@NonNull View itemView) {
             super(itemView);
-            // Find the TextViews by their IDs within the inflated item view
-            // Ensure these IDs (textViewCompanyName, textViewDeadline) match your submission_item.xml
             textViewCompanyName = itemView.findViewById(R.id.textViewCompanyName);
             textViewDeadline = itemView.findViewById(R.id.textViewDeadline);
+            imageViewApprovalStatus = itemView.findViewById(R.id.imageViewApprovalStatus);
         }
     }
 }

@@ -17,6 +17,8 @@ public class SubmissionModel {
     private String language;
     private String productRange;
     private boolean newWebsite;
+
+    private boolean approved;
     private boolean linkDatabase;
 
     @ServerTimestamp // Optional: Firestore sets this on write
@@ -67,6 +69,7 @@ public class SubmissionModel {
         return linkDatabase;
     }
 
+    public boolean isApproved() {return approved;}
     public Date getTimestamp() {
         return timestamp;
     }
