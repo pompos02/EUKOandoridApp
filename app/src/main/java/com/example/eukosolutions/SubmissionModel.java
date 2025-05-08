@@ -79,42 +79,5 @@ public class SubmissionModel {
     public void setId(String id) {
         this.id = id;
     }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public void setCompanyEmail(String companyEmail) {
-        this.companyEmail = companyEmail;
-    }
-
-    public void setCompanyPhone(String companyPhone) {
-        this.companyPhone = companyPhone;
-    }
-
-    public void setProjectDetails(String projectDetails) {
-        this.projectDetails = projectDetails;
-    }
-
-    public void setDeadline(String deadline) {
-        this.deadline = deadline;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public void setProduct_range(String productRange) {this.productRange = productRange;}
-
-    public void setNewWebsite(boolean newWebsite) {
-        this.newWebsite = newWebsite;
-    }
-
-    public void setLinkDatabase(boolean linkDatabase) {
-        this.linkDatabase = linkDatabase;
-    }
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
+    
 }

@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "EukoSolutions"
+rootProject.name = "EUKO Solutions"
 include(":app")

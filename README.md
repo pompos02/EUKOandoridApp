@@ -20,7 +20,7 @@ The EUKO Solutions Android app is a project management platform connecting clien
 - **Firestore Database**: Real-time cloud storage for all project submissions
 - **Server Timestamps**: Automatic timestamp recording for all submissions
 ### Activities Workflow
-1. **GuestHomePageActivity**: Entry point with options to submit a form or log in as admin
+1. **HomePageActivity**: Entry point with options to submit a form or log in as admin
 2. **SubmissionFormActivity**: Collects and validates project details before sending to Firestore
 3. **AdminLoginPageActivity**: Secure gateway to administrative features
 4. **AdminDashboardActivity**: Displays a list of all submitted projects
@@ -55,7 +55,7 @@ A Java class that serves as the data model for project submissions with Firestor
 
 ### 1. Client-Side Components
 
-#### `GuestHomePageActivity.java`
+#### `HomePageActivity.java`
 Entry point to the application, providing navigation options for clients and administrators.
 
 **Key Methods:**

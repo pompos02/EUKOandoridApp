@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="brown_main">#574d39</color>
+    <color name="brown_dark">#3e3527</color> <!-- darker variant -->
+    <color name="brown_light">#7a6f56</color> <!-- lighter for secondary -->
+    <color name="color_on_primary">#ffffff</color> <!-- white text/icons on brown -->
+    <color name="color_on_secondary">#000000</color> <!-- black text/icons on light brown -->
 </resources>

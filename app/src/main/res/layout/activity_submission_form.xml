@@ -150,8 +150,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Submit"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/purple_500"
             app:cornerRadius="8dp" />
 
     </LinearLayout>
